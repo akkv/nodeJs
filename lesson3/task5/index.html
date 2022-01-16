@@ -1,0 +1,23 @@
+<input type="text" value="camelCase" />
+<button id="button1" name="camelToSnake">Camel to snake</button><br />
+<input type="text" value="camel_case" />
+<button id="button2" name="snakeToCamel">Snake to camel</button>
+<br />
+<p><b>Result: </b><span id="result"></span></p>
+<script>
+    button1.onclick = func;
+    button2.onclick = func;
+    function func() {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', this.name + '/' + this.previousSibling.previousSibling.value, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) {
+                console.log(xhr.status + ': ' + xhr.statusText);
+            } else {
+                result.innerHTML = xhr.responseText;
+            }
+        };
+    }
+</script>
