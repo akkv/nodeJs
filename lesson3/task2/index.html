@@ -1,0 +1,27 @@
+<div id="container"></div>
+<button id="button">Show users</button>
+<script>
+    button.onclick = () => {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'getMeUsers', true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) {
+                console.log(xhr.status + ': ' + xhr.statusText);
+            } else {
+                let usersArr = JSON.parse(xhr.responseText);
+                let userList = document.createElement('ul');
+                userList.style.listStyle = 'none';
+                usersArr.forEach((user) => {
+                    let li = document.createElement('li');
+                    user.gender == 'male'
+                        ? (li.innerHTML = '&#128102' + ' ' + user.name)
+                        : (li.innerHTML = '&#128103' + ' ' + user.name);
+                    userList.append(li);
+                });
+                container.append(userList);
+            }
+        };
+    };
+</script>

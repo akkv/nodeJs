@@ -1,0 +1,40 @@
+<div id="container"></div>
+<button id="button">Show goods</button>
+<script>
+    function doStep() {
+        let x = 0;
+        return function step() {
+            x += 4;
+            return x;
+        };
+    }
+    let step = doStep();
+
+    document.addEventListener('DOMContentLoaded', getAndRendGoodsList(step()));
+    button.addEventListener('click', () => this.getAndRendGoodsList(step()));
+
+    function getAndRendGoodsList(n) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'getMeGoods/' + n, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) {
+                console.log(xhr.status + ': ' + xhr.statusText);
+            } else {
+                goodsArr = JSON.parse(xhr.responseText);
+                let goodsList = document.createElement('ul');
+                goodsArr.forEach((item) => {
+                    let li = document.createElement('li');
+                    let title = document.createElement('h3');
+                    let description = document.createElement('p');
+                    title.innerHTML = item.title + item.id;
+                    description.innerHTML = item.description;
+                    li.append(title, description);
+                    goodsList.append(li);
+                });
+                container.append(goodsList);
+            }
+        };
+    }
+</script>

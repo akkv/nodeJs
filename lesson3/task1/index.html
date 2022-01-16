@@ -1,0 +1,17 @@
+<div id="container"></div>
+<button id="button">Show content</button>
+<script>
+    button.onclick = () => {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'ajax', true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) {
+                console.log(xhr.status + ': ' + xhr.statusText);
+            } else {
+                container.innerHTML = xhr.responseText;
+            }
+        };
+    };
+</script>
