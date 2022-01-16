@@ -11,7 +11,7 @@ http.createServer((req, res) => {
             res.write(data);
             res.end();
         });
-    } else if (req.url.startsWith('/getMeGoods')) { 
+    } else if (req.url.startsWith('/getGoods')) { 
         let count = req.url.slice(12)
         fs.readFile('goods.json', 'utf-8', (err, data)=>{
             if (err) {

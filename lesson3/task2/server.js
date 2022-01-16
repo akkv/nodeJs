@@ -11,7 +11,7 @@ http.createServer((req, res) => {
             res.write(data);
             res.end();
         });
-    } else if (req.url == '/getMeUsers') {
+    } else if (req.url == '/getUsers') {
         fs.readFile('users.json', 'utf-8', (err, data)=>{
             if (err) {
                 res.statusCode = 404;
