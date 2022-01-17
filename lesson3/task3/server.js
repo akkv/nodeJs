@@ -12,7 +12,7 @@ http.createServer((req, res) => {
             res.end();
         });
     } else if (req.url.startsWith('/getGoods')) { 
-        let count = req.url.slice(12)
+        let count = req.url.slice(10)
         fs.readFile('goods.json', 'utf-8', (err, data)=>{
             if (err) {
                 res.statusCode = 404;
