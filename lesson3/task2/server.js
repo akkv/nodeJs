@@ -17,7 +17,7 @@ http.createServer((req, res) => {
                 res.statusCode = 404;
                 return res.end();
             }
-            res.writeHead(200, {'content-Type': 'text/html'})
+            res.writeHead(200, {'content-Type': 'application/json'})
             res.write(data);
             res.end();
         })

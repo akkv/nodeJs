@@ -20,7 +20,7 @@ http.createServer((req, res) => {
             }
             let goodsArr = JSON.parse(data);
             let temp = JSON.stringify(goodsArr.splice(count - 4,  count))
-            res.writeHead(200, {'content-Type': 'text/html'})
+            res.writeHead(200, {'content-Type': 'application/json'})
             res.write(temp);
             res.end();
         })
