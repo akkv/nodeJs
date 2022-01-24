@@ -29,12 +29,9 @@ function giveMePswrd(length) {
             yield symbols.charAt(Math.floor(Math.random() * symbols.length));
         }
     }
-    for (let code of generateSequence(length)) {
+    for (let code of generateSequence()) {
         pswrd += code;
     }
     return pswrd;
 }
 console.log(giveMePswrd(20))
-// Мы можем сформировать строку символов с помощью генератора, но не совсем понимаю зачем это нужно
-// Или случайный пароль нужно отдать с помощью генератора?
-// Чем это будет лучше?
