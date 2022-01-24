@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "bl": "^5.0.0",
+    "strftime": "^0.10.1"
+  }
+}
